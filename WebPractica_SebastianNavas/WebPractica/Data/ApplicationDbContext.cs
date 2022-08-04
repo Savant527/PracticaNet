@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,11 +8,11 @@ using WebPractica.Models;
 
 namespace WebPractica.Data
 {
-    public class ApplicationDbContext:DbContext
+    public class ApplicationDbContext :IdentityDbContext
     {
         //Constructor ae crea con ctor
 
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> option):base(option)
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> option) : base(option)
         { 
 
         }
@@ -19,6 +20,7 @@ namespace WebPractica.Data
         //Agregamos todos los modelos que luego seran tablas
 
         public DbSet<Registros> Registros { get; set; }
+        public DbSet<AppUsuario> AppUsuario { get; set; }
 
     }
 }

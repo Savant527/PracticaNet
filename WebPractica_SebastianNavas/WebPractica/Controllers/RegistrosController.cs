@@ -113,8 +113,8 @@ namespace WebPractica.Controllers
                         if (ImageFile != null && ImageFile.Length > 0)
                         {
                             registros.Imagen = GetByteArrayFromImage(ImageFile);
-                            _context.Update(registros);
                         }
+                            _context.Update(registros);
                         await _context.SaveChangesAsync();
                         return RedirectToAction(nameof(Index));
                     }

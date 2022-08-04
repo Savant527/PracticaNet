@@ -3,154 +3,159 @@
 @{
     ViewData["Title"] = "Edit";
 }
+<div class="wrapper">
+    <div class="content-wrapper">
+        <center><h1>Editar Usuarios</h1></center>
+        <br />
+        <div class="container">
 
-<center><h1>Editar Usuarios</h1></center>
-<br />
-<div class="container">
-    
-    <form asp-action="Edit" enctype="multipart/form-data" asp-controller="Registros">
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        <div class="row">
-            <input type="hidden" asp-for="IdRegistro" />
-            <div class="form-group col">
+            <form asp-action="Edit" enctype="multipart/form-data" asp-controller="Registros">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="row">
-                    <div class="form-group">
-                        <div class="col-md-4">
-                            <label asp-for="Imagen" class="control-label"></label>
-                        </div>
-                        <div class="col-md-4">
-                            @if (Model.Imagen != null)
-                            {
-                                var base64 = Convert.ToBase64String(Model.Imagen);
-                                var imgScr = String.Format("data:image/jpg;base64,{0}",
-                                base64);
-                                <img id="mostrarfoto" src='@imgScr' style="max-width:
+                    <input type="hidden" asp-for="IdRegistro" />
+                    <div class="form-group col">
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="col-md-4">
+                                    <label asp-for="Imagen" class="control-label"></label>
+                                </div>
+                                <div class="col-md-4">
+                                    @if (Model.Imagen != null)
+                                    {
+                                        var base64 = Convert.ToBase64String(Model.Imagen);
+                                        var imgScr = String.Format("data:image/jpg;base64,{0}",
+                                        base64);
+                                        <img id="mostrarfoto" src='@imgScr' style="max-width:
                                     150px; max-height: 150px;" class="img-circle elevation-2" />
-                                <input type="hidden" asp-for="Imagen" />
-                            }
-                            <label for="file"></label>
-                            <input type="file" style="color: transparent" aspfor="Imagen" name="ImageFile" id="btn_enviar" accept="image/*"
-                                   onchange="loadFile(event)">
-                            <script>
-                                var loadFile = function (event) {
-                                   var output = document.getElementById('mostrarfoto');
-                                    output.src = URL.createObjectURL(event.target.files[0]);
+                                        <input type="hidden" asp-for="Imagen" />
+                                    }
+                                    <label for="file"></label>
+                                    <input type="file" style="color: transparent" aspfor="Imagen" name="ImageFile" id="btn_enviar" accept="image/*"
+                                           onchange="loadFile(event)">
+                                    <script>
+                                        var loadFile = function (event) {
+                                            var output = document.getElementById('mostrarfoto');
+                                            output.src = URL.createObjectURL(event.target.files[0]);
                                         };
-                            </script>
-                            <span asp-validation-for="Imagen" class="text-danger"></span>
+                                    </script>
+                                    <span asp-validation-for="Imagen" class="text-danger"></span>
+                                </div>
+                            </div>
                         </div>
                     </div>
+                    <div class="form-group col">
+                        <label asp-for="Documento" class="control-label"></label>
+                        <input asp-for="Documento" class="form-control" />
+                        <span asp-validation-for="Documento" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col">
+                        <label asp-for="Nombre" class="control-label"></label>
+                        <input asp-for="Nombre" class="form-control" />
+                        <span asp-validation-for="Nombre" class="text-danger"></span>
+                    </div>
+
                 </div>
-            </div>
-            <div class="form-group col">
-                <label asp-for="Documento" class="control-label"></label>
-                <input asp-for="Documento" class="form-control" />
-                <span asp-validation-for="Documento" class="text-danger"></span>
-            </div>
-            <div class="form-group col">
-                <label asp-for="Nombre" class="control-label"></label>
-                <input asp-for="Nombre" class="form-control" />
-                <span asp-validation-for="Nombre" class="text-danger"></span>
-            </div>
+
+
+                <div class="row">
+
+                    <div class="form-group col">
+                        <label asp-for="Apellidos" class="control-label"></label>
+                        <input asp-for="Apellidos" class="form-control" />
+                        <span asp-validation-for="Apellidos" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col">
+                        <label asp-for="FechaNac" class="control-label"></label>
+                        <input asp-for="FechaNac" class="form-control" />
+                        <span asp-validation-for="FechaNac" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col">
+                        <label asp-for="Direccion" class="control-label"></label>
+                        <input asp-for="Direccion" class="form-control" />
+                        <span asp-validation-for="Direccion" class="text-danger"></span>
+                    </div>
+
+                </div>
+
+
+                <div class="row">
+
+                    <div class="form-group col">
+                        <label asp-for="Celular" class="control-label"></label>
+                        <input asp-for="Celular" class="form-control" />
+                        <span asp-validation-for="Celular" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col">
+                        <label asp-for="Genero" class="control-label"></label><br />
+                        @*<input asp-for="Genero" class="form-control" />*@
+                        Masculino
+                        @Html.RadioButtonFor(model => model.Genero, "M")
+                        Femenino
+                        @Html.RadioButtonFor(model => model.Genero, "F")
+
+                        <span asp-validation-for="Genero" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col">
+                        <label asp-for="Deporte" class="control-label"></label>
+                        @*<input asp-for="Deporte" class="form-control" />*@
+                        <select class="custom-select" asp-for="Deporte" required>
+                            <option disabled>Seleccione</option>
+                            <option value="FÚTBOL">Fútbol</option>
+                            <option value="BALONCESTO">Baloncesto</option>
+                            <option value="NATACIÓN">Natación</option>
+                        </select>
+                        <span asp-validation-for="Deporte" class="text-danger"></span>
+                    </div>
+
+                </div>
+
+
+                <div class="row">
+
+                    <div class="form-group col">
+                        <label asp-for="Trabaja" class="control-label"></label>
+                        @*<input asp-for="Trabaja" class="form-control" />*@
+                        <select class="custom-select" asp-for="Trabaja" required>
+                            <option disabled>Seleccione</option>
+                            <option value="SI">Si</option>
+                            <option value="NO">No</option>
+                        </select>
+                        <span asp-validation-for="Trabaja" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col">
+                        <label asp-for="Sueldo" class="control-label"></label>
+                        <input asp-for="Sueldo" class="form-control" />
+                        <span asp-validation-for="Sueldo" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col">
+                        <label asp-for="Estado" class="control-label"></label>
+                        @*<input asp-for="Estado" class="form-control" />*@
+                        <select class="custom-select" asp-for="Estado" required>
+                            <option disabled>Seleccione</option>
+                            <option value="A">Activo</option>
+                            <option value="I">Inactivo</option>
+                        </select>
+                        <span asp-validation-for="Estado" class="text-danger"></span>
+                    </div>
+
+                </div>
+
+                <div class="row d-flex justify-content-center">
+                    <input type="submit" value="Guardar" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+        <br />
+        <div class="d-flex justify-content-center">
+            <a asp-action="Index" class="btn bg-warning" style="color: white;">Volver</a>
 
         </div>
-      
-
-        <div class="row">
-
-            <div class="form-group col">
-                <label asp-for="Apellidos" class="control-label"></label>
-                <input asp-for="Apellidos" class="form-control" />
-                <span asp-validation-for="Apellidos" class="text-danger"></span>
-            </div>
-            <div class="form-group col">
-                <label asp-for="FechaNac" class="control-label"></label>
-                <input asp-for="FechaNac" class="form-control" />
-                <span asp-validation-for="FechaNac" class="text-danger"></span>
-            </div>
-            <div class="form-group col">
-                <label asp-for="Direccion" class="control-label"></label>
-                <input asp-for="Direccion" class="form-control" />
-                <span asp-validation-for="Direccion" class="text-danger"></span>
-            </div>
-
-        </div>
 
 
-        <div class="row">
+        @section Scripts {
+            @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+        }
 
-            <div class="form-group col">
-                <label asp-for="Celular" class="control-label"></label>
-                <input asp-for="Celular" class="form-control" />
-                <span asp-validation-for="Celular" class="text-danger"></span>
-            </div>
-            <div class="form-group col">
-                <label asp-for="Genero" class="control-label"></label><br />
-                @*<input asp-for="Genero" class="form-control" />*@
-                Masculino
-                @Html.RadioButtonFor(model => model.Genero, "M")
-                Femenino
-                @Html.RadioButtonFor(model => model.Genero, "F")
-
-                <span asp-validation-for="Genero" class="text-danger"></span>
-            </div>
-            <div class="form-group col">
-                <label asp-for="Deporte" class="control-label"></label>
-                @*<input asp-for="Deporte" class="form-control" />*@
-                <select class="custom-select" asp-for="Deporte" required>
-                    <option disabled>Seleccione</option>
-                    <option value="FÚTBOL">Fútbol</option>
-                    <option value="BALONCESTO">Baloncesto</option>
-                    <option value="NATACIÓN">Natación</option>
-                </select>
-                <span asp-validation-for="Deporte" class="text-danger"></span>
-            </div>
-
-        </div>
-     
-
-        <div class="row">
-
-            <div class="form-group col">
-                <label asp-for="Trabaja" class="control-label"></label>
-                @*<input asp-for="Trabaja" class="form-control" />*@
-                <select class="custom-select" asp-for="Trabaja" required>
-                    <option disabled>Seleccione</option>
-                    <option value="SI">Si</option>
-                    <option value="NO">No</option>
-                </select>
-                <span asp-validation-for="Trabaja" class="text-danger"></span>
-            </div>
-            <div class="form-group col">
-                <label asp-for="Sueldo" class="control-label"></label>
-                <input asp-for="Sueldo" class="form-control" />
-                <span asp-validation-for="Sueldo" class="text-danger"></span>
-            </div>
-            <div class="form-group col">
-                <label asp-for="Estado" class="control-label"></label>
-                @*<input asp-for="Estado" class="form-control" />*@
-                <select class="custom-select" asp-for="Estado" required>
-                    <option disabled>Seleccione</option>
-                    <option value="A">Activo</option>
-                    <option value="I">Inactivo</option>
-                </select>
-                <span asp-validation-for="Estado" class="text-danger"></span>
-            </div>
-
-        </div>
-    
-        <div class="row d-flex justify-content-center">
-            <input type="submit" value="Guardar" class="btn btn-primary" />
-        </div>
-    </form>
-</div>
-<br />
-<div class="d-flex justify-content-center">
-    <a asp-action="Index" class="btn bg-warning" style="color: white;">Volver</a>
-    
+    </div>
 </div>
 
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}

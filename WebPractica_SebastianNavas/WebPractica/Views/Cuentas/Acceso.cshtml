@@ -1,0 +1,62 @@
+﻿@model LoginUsuarios
+@{
+    ViewData["Title"] = "Acceso de usuario";
+}
+<div class="wrapper">
+    <div class="content-wrapper d-flex justify-content-center align-items-center">
+        <div class="container mt-3">
+            <div class="row justify-content-center">
+                <div class="col-md-5">
+                    <div class="card card-primary card-outline">
+                        <div class="card-header"><center><h3>Bienvenido - Inicio de Sesión</h3></center></div>
+                        <div class="card-body">
+                            <form asp-controller="Cuentas" asp-action="Acceso" method="post">
+                                <div class="input-group mb-3">
+                                    <input asp-for="Email" class="form-control" placeholder="Correo" />
+                                    <div class="input-group-append">
+                                        <div class="input-group-text">
+                                            <span class="bi bi-envelope"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                                <div class="input-group mb-3">
+                                    <input asp-for="Password" class="form-control" placeholder="Contraseña" />
+                                    <div class="input-group-append">
+                                        <div class="input-group-text">
+                                            <span class="bi bi-lock"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                                <div class="mb-3">
+                                    <div class="custom-check">
+                                        <label asp-for="Remerberme">
+                                            <input asp-for="Remerberme" />
+                                            @Html.DisplayNameFor(m => m.Remerberme)
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <button type="submit" class="btn btn-success w-100 btn-lg">Ingresar <i class="bi bi-arrow-right-circle-fill"></i></button>
+                                        <center>
+                                            <p class="m-3"><a asp-action="Registro">Registrarse como un nuevo usuario</a></p>
+                                            <p class="m-3"><a asp-action="OlvidoPassword">¿Olvidaste tu contaseña?</a></p>
+                                        </center>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        @section Scripts {
+            @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+        }
+    </div>
+</div>
+
