@@ -6,67 +6,98 @@
 }
 <div class="wrapper">
     <div class="content-wrapper d-flex justify-content-center align-items-center">
-        <div class="container card p-3">
+        <div class="container card" style="width:40rem;">
             @*Titulo*@
-            <h1 class="text-center">Registro de Usuarios</h1>
-            @*El formulario,Cuentas=Nombre del controlador,Registro=Nombre del método,metodo=post*@
-            <form asp-controller="Cuentas" asp-action="Registro" method="post" class="">
-                @*Muestra las validaciones en rojo si es necesario*@
-                <div class="text-danger" asp-validation-summary="ModelOnly"></div>
-                <div class="form-group  ">
+            <h1 class="text-center mb-3 mt-3">Registro de Usuarios</h1>
+            <div class="container w-75 m-auto">
+                @*El formulario,Cuentas=Nombre del controlador,Registro=Nombre del método,metodo=post*@
+                <form asp-controller="Cuentas" asp-action="Registro" method="post" class="">
+                    @*Muestra las validaciones en rojo si es necesario*@
+                    <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+                    <div class="form-group">
+                        @*UserName Nombre del campo,Utiliza dos columna de las 12 disponibles para el label*@
+                        <label asp-for="Nombre" class="col-md-12 "></label>
+                        @*Para digitar el nombre utiliza 10 columnas de las doce disponibles*@
+                        <div class="col-md-12">
+                            <div class="input-group mb-3">
+                                @*Campo donde se digita el nombre*@
+                                <input asp-for="Nombre" class="form-control" />
+                                <div class="input-group-append">
+                                    <div class="input-group-text">
+                                        <span class="bi bi-person-fill"></span>
+                                    </div>
+                                </div>
+                                @*Valida que el campo cumple con todo*@
+                                <span asp-validation-for="Nombre" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
 
-                    @*UserName Nombre del campo,Utiliza dos columna de las 12 disponibles para el label*@
-                    <label asp-for="Nombre" class="col-md-2 "></label>
-                    @*Para digitar el nombre utiliza 10 columnas de las doce disponibles*@
-                    <div class="col-md-10">
-                        @*Campo donde se digita el nombre*@
-                        <input asp-for="Nombre" class="form-control" />
-                        @*Valida que el campo cumple con todo*@
-                        <span asp-validation-for="Nombre" class="text-danger"></span>
-                    </div>
-                </div>
 
-                <div class="form-group">
-                    <label asp-for="Documento" class="col-md-2"></label>
-                    <div class="col-md-10">
-                        <input asp-for="Documento" class="form-control" />
-                        <span asp-validation-for="Documento" class="text-danger"></span>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Email" class="col-md-2"></label>
-                    <div class="col-md-10">
-                        <input asp-for="Email" class="form-control" />
-                        <span asp-validation-for="Email" class="text-danger"></span>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Password" class="col-md-2"></label>
-                    <div class="col-md-10">
-                        <input asp-for="Password" class="form-control" />
-                        <span asp-validation-for="Password" class="text-danger"></span>
-                    </div>
-                </div>
+                    <div class="form-group">
+                        <label asp-for="Documento" class="col-md-12"></label>
+                        <div class="col-md-12">
+                            <div class="input-group mb-3">
+                                <input asp-for="Documento" class="form-control" />
+                                <div class="input-group-append">
+                                    <div class="input-group-text">
+                                        <span class="bi bi-credit-card-2-back-fill"></span>
+                                    </div>
+                                </div>
 
-                @*<div class="form-group">
-                <label asp-for="ConfirPassword" class="col-md-2">Confirmar Contraseña</label>
-                <div class="col-md-10">
-                    <input asp-for="ConfirPassword" class="form-control" />
-                    <span asp-validation-for="ConfirPassword" class="text-danger"></span>
-                </div>
-            </div>*@
-                @*Creamos el div para registrarnos*@
-                <div class="form-group">
-                    <div class="col-md-10">
-                        <button type="submit" class="btn btn-success">Registrarse</button>
+                                <span asp-validation-for="Documento" class="text-danger"></span>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </form>
+                    <div class="form-group">
+                        <label asp-for="Email" class="col-md-12"></label>
+                        <div class="col-md-12">
+                            <div class="input-group mb-3">
+                                <input asp-for="Email" class="form-control" />
+                                <div class="input-group-append">
+                                    <div class="input-group-text">
+                                        <span class="bi bi-envelope"></span>
+                                    </div>
+                                </div>
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Password" class="col-md-12"></label>
+                        <div class="col-md-12">
+                            <div class="input-group mb-3">
+                                <input asp-for="Password" class="form-control" />
+                                <div class="input-group-append">
+                                    <div class="input-group-text">
+                                        <span class="bi bi-lock"></span>
+                                    </div>
+                                </div>
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                            </div>  
+                        </div>
+                    </div>
+
+                    @*<div class="form-group">
+                            <label asp-for="ConfirPassword" class="col-md-12">Confirmar Contraseña</label>
+                            <div class="col-md-12">
+                                <input asp-for="ConfirPassword" class="form-control" />
+                                <span asp-validation-for="ConfirPassword" class="text-danger"></span>
+                            </div>
+                        </div>*@
+                    @*Creamos el div para registrarnos*@
+                    <div class="form-group">
+                        <div class="col-md-12 text-center">
+                            <button type="submit" class="btn btn-dark">Registrarse</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
 
 
         @*Utilizamos un scrip para llamar una vista parcial
-        que valida al lado del cliente en JavaScrip*@
+            que valida al lado del cliente en JavaScrip*@
 
         @section Scripts{
             @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

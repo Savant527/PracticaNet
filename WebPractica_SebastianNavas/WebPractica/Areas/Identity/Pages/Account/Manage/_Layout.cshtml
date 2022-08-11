@@ -11,17 +11,19 @@
 
 <div class="wrapper">
     <div class="content-wrapper">
-        <h2 class="text-center">Gestionar mi cuenta</h2>
-
-        <div>
-            <h4>Cambiar la configuración de mi cuenta</h4>
-            <hr />
-            <div class="row">
-                <div class="col-md-3">
-                    <partial name="_ManageNav" />
-                </div>
-                <div class="col-md-9">
-                    @RenderBody()
+        <div class="container">
+            <h2 class="text-center m-3">Gestionar mi cuenta</h2>
+            
+            <div>
+                <h4>Cambiar la configuración de mi cuenta</h4>
+                <hr />
+                <div class="row">
+                    <div class="col-md-3">
+                        <partial name="_ManageNav" />
+                    </div>
+                    <div class="col-md-9">
+                        @RenderBody()
+                    </div>
                 </div>
             </div>
         </div>
