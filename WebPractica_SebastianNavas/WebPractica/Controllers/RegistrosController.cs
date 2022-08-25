@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -12,6 +13,9 @@ using Microsoft.Reporting.NETCore;
 using WebPractica.Data;
 using WebPractica.DataSet;
 using WebPractica.Models;
+using ClosedXML.Excel;
+using Microsoft.Extensions.Configuration;
+using System.Data.SqlClient;
 
 namespace WebPractica.Controllers
 {
@@ -28,6 +32,11 @@ namespace WebPractica.Controllers
 
         // GET: Registros
         public async Task<IActionResult> Index()
+        {
+            return View(await _context.Registros.ToListAsync());
+        }
+
+        public async Task<IActionResult> Disabled()
         {
             return View(await _context.Registros.ToListAsync());
         }
@@ -217,6 +226,11 @@ namespace WebPractica.Controllers
             // Muestra el reporte en la pantalla
             //return File(pdf, mimetype);
         }
+
+
+
+
+
     }
 
 }

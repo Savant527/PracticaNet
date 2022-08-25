@@ -367,3 +367,7 @@ C:\PROYECTO\JHON_NAVAS\Practica\WebPractica_SebastianNavas\WebPractica\obj\Debug
 C:\PROYECTO\JHON_NAVAS\Practica\WebPractica_SebastianNavas\WebPractica\obj\Debug\net5.0\Razor\Areas\Identity\Pages\_ViewImports.cshtml.g.cs
 C:\PROYECTO\JHON_NAVAS\Practica\WebPractica_SebastianNavas\WebPractica\obj\Debug\net5.0\Razor\Areas\Identity\Pages\_ViewStart.cshtml.g.cs
 C:\PROYECTO\JHON_NAVAS\Practica\WebPractica_SebastianNavas\WebPractica\obj\Debug\net5.0\Razor\Areas\Identity\Pages\Account\Manage\TwoFactorAuthentication.cshtml.g.cs
+C:\PROYECTO\JHON_NAVAS\Practica\WebPractica_SebastianNavas\WebPractica\obj\Debug\net5.0\Razor\Views\Registros\Disabled.cshtml.g.cs
+C:\PROYECTO\JHON_NAVAS\Practica\WebPractica_SebastianNavas\WebPractica\bin\Debug\net5.0\ClosedXML.dll
+C:\PROYECTO\JHON_NAVAS\Practica\WebPractica_SebastianNavas\WebPractica\bin\Debug\net5.0\DocumentFormat.OpenXml.dll
+C:\PROYECTO\JHON_NAVAS\Practica\WebPractica_SebastianNavas\WebPractica\bin\Debug\net5.0\ExcelNumberFormat.dll

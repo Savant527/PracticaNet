@@ -31,11 +31,11 @@
                             @Html.DisplayNameFor(model => model.Apellidos)
                         </th>
                         @*<th>
-                            @Html.DisplayNameFor(model => model.FechaNac)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Direccion)
-                        </th>*@
+                                @Html.DisplayNameFor(model => model.FechaNac)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Direccion)
+                            </th>*@
                         <th>
                             @Html.DisplayNameFor(model => model.Celular)
                         </th>
@@ -60,57 +60,63 @@
                 <tbody>
                     @foreach (var item in Model)
                     {
-                        <tr>
-                            <td>
-                                @*@Html.DisplayFor(modelItem => item.Imagen)*@
-                                @if (item.Imagen != null)
-                                {
-                                    var base64 = Convert.ToBase64String(item.Imagen);
-                                    var imgScr = String.Format("data:image/jpg;base64,{0}",
-                                    base64);
-                                    <img src='@imgScr' style="max-width:50px; max-height:50px;" class="img-circle elevation-2" />}
-                            </td>
+                        @if (item.Estado != "I")
+                        {
 
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Documento)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Nombre)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Apellidos)
-                            </td>
-                            @*<td>
-                                @Html.DisplayFor(modelItem => item.FechaNac)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Direccion)
-                            </td>*@
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Celular)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Genero)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Deporte)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Trabaja)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Sueldo)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Estado)
-                            </td>
-                            <td class="d-flex justify-content-center align-items-center">
 
-                                <a asp-action="Edit" asp-route-id="@item.IdRegistro" class="btn btn-success m-1" data-toggle="tooltip" data-placement="bottom" title="Editar"><span class="bi bi-pencil"></span></a>
-                                <a asp-action="Details" asp-route-id="@item.IdRegistro" class="btn btn-primary m-1" data-toggle="tooltip" data-placement="bottom" title="Detalle"><span class="bi bi-file-text"></span></a>
-                                <a asp-action="delete-conformation" data-target="#delete-conformation" onclick="recibir(@item.IdRegistro)" class="btn btn-danger m-1" data-placement="bottom" title="Eliminar" data-toggle="modal"><span class="bi bi-x-circle"></span></a>
-                            </td>
-                        </tr>
+                            <tr>
+                                <td>
+                                    @*@Html.DisplayFor(modelItem => item.Imagen)*@
+                                    @if (item.Imagen != null)
+                                    {
+                                        var base64 = Convert.ToBase64String(item.Imagen);
+                                        var imgScr = String.Format("data:image/jpg;base64,{0}",
+                                        base64);
+                                        <img src='@imgScr' style="max-width:50px; max-height:50px;" class="img-circle elevation-2" />
+                                     }
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Documento)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Nombre)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Apellidos)
+                                </td>
+                                @*<td>
+                                        @Html.DisplayFor(modelItem => item.FechaNac)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Direccion)
+                                    </td>*@
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Celular)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Genero)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Deporte)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Trabaja)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Sueldo)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Estado)
+                                </td>
+                                <td class="d-flex justify-content-center align-items-center">
+
+                                    <a asp-action="Edit" asp-route-id="@item.IdRegistro" class="btn btn-success m-1" data-toggle="tooltip" data-placement="bottom" title="Editar"><span class="bi bi-pencil"></span></a>
+                                    <a asp-action="Details" asp-route-id="@item.IdRegistro" class="btn btn-primary m-1" data-toggle="tooltip" data-placement="bottom" title="Detalle"><span class="bi bi-file-text"></span></a>
+                                    <a asp-action="delete-conformation" data-target="#delete-conformation" onclick="recibir(@item.IdRegistro)" class="btn btn-danger m-1" data-placement="bottom" title="Eliminar" data-toggle="modal"><span class="bi bi-x-circle"></span></a>
+                                </td>
+                            </tr>
+                        }
                     }
                 </tbody>
             </table>

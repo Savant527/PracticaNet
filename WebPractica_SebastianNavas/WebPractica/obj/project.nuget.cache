@@ -1,9 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "CIS+4DV2hYcPmDx1yXdaXjyZGNkibPy9jp1yzpHcOo5vq6GNQBlulYzpIAwyY5MUPnPP81XQrTpQ7JvddStN7A==",
+  "dgSpecHash": "nEaFviHJb084rOv3SsZbQ20YuZWnNCCumL6SgElppzMz6X8MoesQHjI1b21IZGHx4shhTaXOW1+2whVpeHK3xQ==",
   "success": true,
   "projectFilePath": "C:\\PROYECTO\\JHON_NAVAS\\Practica\\WebPractica_SebastianNavas\\WebPractica\\WebPractica.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\SENA\\.nuget\\packages\\closedxml\\0.96.0\\closedxml.0.96.0.nupkg.sha512",
+    "C:\\Users\\SENA\\.nuget\\packages\\documentformat.openxml\\2.16.0\\documentformat.openxml.2.16.0.nupkg.sha512",
+    "C:\\Users\\SENA\\.nuget\\packages\\excelnumberformat\\1.1.0\\excelnumberformat.1.1.0.nupkg.sha512",
     "C:\\Users\\SENA\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\SENA\\.nuget\\packages\\microsoft.aspnetcore.authentication\\2.2.0\\microsoft.aspnetcore.authentication.2.2.0.nupkg.sha512",
     "C:\\Users\\SENA\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",

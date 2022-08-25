@@ -1,0 +1,156 @@
+﻿@model IEnumerable<WebPractica.Models.Registros>
+
+@{
+    ViewData["Title"] = "Deshabilitado";
+}
+<div class="wrapper">
+    <div class="content-wrapper p-2">
+
+        <h1 class="text-center mt-5">Usuarios Registrados</h1>
+
+
+        <div class="container">
+
+
+            <p>
+                <a asp-action="Create" class="btn btn-dark justify-content-center">Crear nuevo registro</a>
+            </p>
+            <table class="table table-bordered" id="tblData">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Imagen)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Documento)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Nombre)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Apellidos)
+                        </th>
+                        @*<th>
+                                @Html.DisplayNameFor(model => model.FechaNac)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Direccion)
+                            </th>*@
+                        <th>
+                            @Html.DisplayNameFor(model => model.Celular)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Genero)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Deporte)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Trabaja)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Sueldo)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Estado)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        @if (item.Estado != "A")
+                        {
+
+
+                            <tr>
+                                <td>
+                                    @*@Html.DisplayFor(modelItem => item.Imagen)*@
+                                    @if (item.Imagen != null)
+                                    {
+                                        var base64 = Convert.ToBase64String(item.Imagen);
+                                        var imgScr = String.Format("data:image/jpg;base64,{0}",
+                                        base64);
+                                        <img src='@imgScr' style="max-width:50px; max-height:50px;" class="img-circle elevation-2" />}
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Documento)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Nombre)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Apellidos)
+                                </td>
+                                @*<td>
+                                        @Html.DisplayFor(modelItem => item.FechaNac)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Direccion)
+                                    </td>*@
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Celular)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Genero)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Deporte)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Trabaja)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Sueldo)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Estado)
+                                </td>
+                                <td class="d-flex justify-content-center align-items-center">
+
+                                    <a asp-action="Edit" asp-route-id="@item.IdRegistro" class="btn btn-success m-1" data-toggle="tooltip" data-placement="bottom" title="Editar"><span class="bi bi-pencil"></span></a>
+                                    <a asp-action="Details" asp-route-id="@item.IdRegistro" class="btn btn-primary m-1" data-toggle="tooltip" data-placement="bottom" title="Detalle"><span class="bi bi-file-text"></span></a>
+                                    <a asp-action="delete-conformation" data-target="#delete-conformation" onclick="recibir(@item.IdRegistro)" class="btn btn-danger m-1" data-placement="bottom" title="Eliminar" data-toggle="modal"><span class="bi bi-x-circle"></span></a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="modal fade" id="delete-conformation" tabindex="-1" role="dialog" aria-labelledby="confirmdelete" aria-hidden="true" data-backdrop="static" datakeyboard="false">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="confirmdelete">Eliminar</h5>
+                        <button type="button" class="close" data-dismiss="modal" arialabel="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>¿Está seguro de eliminar este registro?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <a asp-action="Index" class="btn btn-dark m-1" style="color: white;">Cancelar</a>
+                        @using (Html.BeginForm("Delete", "Registros"))
+                        {
+                            <input type="hidden" id="codigo" name="id" />
+                            <input type="submit" value="Eliminar" data-toggle="modal" datatarget="#delete-conformation" class="btn btn-danger" />
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script language="javascript">
+            function recibir(id) {
+                var valor = id
+                document.getElementById("codigo").value = valor;
+            }
+        </script>
+        @section Scripts{
+            <script src="/js/Tablas.js"></script>
+        }
+    </div>
+</div>
