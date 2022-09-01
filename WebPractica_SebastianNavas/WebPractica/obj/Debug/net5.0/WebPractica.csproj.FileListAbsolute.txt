@@ -371,3 +371,5 @@ C:\PROYECTO\JHON_NAVAS\Practica\WebPractica_SebastianNavas\WebPractica\obj\Debug
 C:\PROYECTO\JHON_NAVAS\Practica\WebPractica_SebastianNavas\WebPractica\bin\Debug\net5.0\ClosedXML.dll
 C:\PROYECTO\JHON_NAVAS\Practica\WebPractica_SebastianNavas\WebPractica\bin\Debug\net5.0\DocumentFormat.OpenXml.dll
 C:\PROYECTO\JHON_NAVAS\Practica\WebPractica_SebastianNavas\WebPractica\bin\Debug\net5.0\ExcelNumberFormat.dll
+C:\PROYECTO\JHON_NAVAS\Practica\WebPractica_SebastianNavas\WebPractica\obj\Debug\net5.0\Razor\Views\Registros\ReporteExcel.cshtml.g.cs
+C:\PROYECTO\JHON_NAVAS\Practica\WebPractica_SebastianNavas\WebPractica\obj\Debug\net5.0\Razor\Views\Registros\Graficas.cshtml.g.cs

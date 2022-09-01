@@ -27,8 +27,8 @@ namespace WebPractica.Migrations
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Discriminator = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Documento = table.Column<string>(type: "varchar(max)", nullable: true),
-                    Nombre = table.Column<string>(type: "varchar(max)", nullable: true),
+                    Documento = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -56,17 +56,18 @@ namespace WebPractica.Migrations
                     IdRegistro = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Imagen = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
-                    Documento = table.Column<string>(type: "varchar(20)", maxLength: 20, nullable: false),
-                    Nombre = table.Column<string>(type: "varchar(30)", maxLength: 30, nullable: false),
-                    Apellidos = table.Column<string>(type: "varchar(30)", maxLength: 30, nullable: false),
-                    FechaNac = table.Column<DateTime>(type: "datetime", nullable: false),
-                    Direccion = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false),
-                    Celular = table.Column<string>(type: "varchar(15)", maxLength: 15, nullable: false),
-                    Genero = table.Column<string>(type: "varchar(1)", maxLength: 1, nullable: false),
-                    Deporte = table.Column<string>(type: "varchar(30)", maxLength: 30, nullable: false),
-                    Trabaja = table.Column<string>(type: "varchar(2)", maxLength: 2, nullable: false),
+                    Documento = table.Column<string>(type: "varchar(20)", nullable: false),
+                    Nombre = table.Column<string>(type: "varchar(30)", nullable: false),
+                    Apellidos = table.Column<string>(type: "varchar(30)", nullable: false),
+                    FechaNac = table.Column<DateTime>(type: "DateTime", nullable: false),
+                    Direccion = table.Column<string>(type: "varchar(100)", nullable: false),
+                    Celular = table.Column<string>(type: "varchar(15)", nullable: false),
+                    Genero = table.Column<string>(type: "varchar(1)", nullable: false),
+                    Deporte = table.Column<string>(type: "varchar(30)", nullable: false),
+                    Trabaja = table.Column<string>(type: "varchar(2)", nullable: false),
                     Sueldo = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    Estado = table.Column<string>(type: "varchar(1)", maxLength: 1, nullable: false)
+                    Estado = table.Column<string>(type: "varchar(1)", nullable: false),
+                    FechaRegistro = table.Column<DateTime>(type: "DateTime", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -119,8 +120,8 @@ namespace WebPractica.Migrations
                 name: "AspNetUserLogins",
                 columns: table => new
                 {
-                    LoginProvider = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    ProviderKey = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    LoginProvider = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
+                    ProviderKey = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
                     ProviderDisplayName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
@@ -164,8 +165,8 @@ namespace WebPractica.Migrations
                 columns: table => new
                 {
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    LoginProvider = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    LoginProvider = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
                     Value = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>

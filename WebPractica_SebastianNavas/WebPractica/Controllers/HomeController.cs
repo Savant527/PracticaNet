@@ -46,8 +46,11 @@ namespace WebPractica.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        public IActionResult ExportarExcel()
+        public IActionResult ExportarExcel(DateTime fechaInicial , DateTime fechaFinal)
         {
+            string fe1 = fechaInicial.ToShortDateString();
+            string fe2 = fechaFinal.ToShortDateString();
+
             DataTable TablaRegistros = new DataTable();
 
 
@@ -57,10 +60,10 @@ namespace WebPractica.Controllers
                 using (var adapter = new SqlDataAdapter())
                 {
 
-                    adapter.SelectCommand = new SqlCommand("sp_reporte_registros", conexion);
+                    adapter.SelectCommand = new SqlCommand("sp_reporte_registros2", conexion);
                     adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
-
-
+                    adapter.SelectCommand.Parameters.AddWithValue("@FechaInicio", fe1);
+                    adapter.SelectCommand.Parameters.AddWithValue("@FechaFin", fe2);
                     adapter.Fill(TablaRegistros);
                 }
             }

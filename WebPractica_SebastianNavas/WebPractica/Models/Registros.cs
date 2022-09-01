@@ -70,5 +70,13 @@ namespace WebPractica.Models
         [Required(ErrorMessage = "Dato requerido")]
         [Column(TypeName = "varchar(1)")]
         public string Estado { get; set; }
+
+        [DisplayName("Fecha Registro")]
+        [DataType(DataType.DateTime)]
+        [Required(ErrorMessage = "Fecha requerida")]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = false)]
+        [Column(TypeName = "DateTime")]
+        public DateTime FechaRegistro { get; set; }
+
     }
 }

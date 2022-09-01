@@ -168,10 +168,12 @@ namespace WebPractica.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("nvarchar(450)");
+                        .HasMaxLength(128)
+                        .HasColumnType("nvarchar(128)");
 
                     b.Property<string>("ProviderKey")
-                        .HasColumnType("nvarchar(450)");
+                        .HasMaxLength(128)
+                        .HasColumnType("nvarchar(128)");
 
                     b.Property<string>("ProviderDisplayName")
                         .HasColumnType("nvarchar(max)");
@@ -208,10 +210,12 @@ namespace WebPractica.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("nvarchar(450)");
+                        .HasMaxLength(128)
+                        .HasColumnType("nvarchar(128)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(450)");
+                        .HasMaxLength(128)
+                        .HasColumnType("nvarchar(128)");
 
                     b.Property<string>("Value")
                         .HasColumnType("nvarchar(max)");
@@ -230,40 +234,36 @@ namespace WebPractica.Migrations
 
                     b.Property<string>("Apellidos")
                         .IsRequired()
-                        .HasMaxLength(30)
                         .HasColumnType("varchar(30)");
 
                     b.Property<string>("Celular")
                         .IsRequired()
-                        .HasMaxLength(15)
                         .HasColumnType("varchar(15)");
 
                     b.Property<string>("Deporte")
                         .IsRequired()
-                        .HasMaxLength(30)
                         .HasColumnType("varchar(30)");
 
                     b.Property<string>("Direccion")
                         .IsRequired()
-                        .HasMaxLength(100)
                         .HasColumnType("varchar(100)");
 
                     b.Property<string>("Documento")
                         .IsRequired()
-                        .HasMaxLength(20)
                         .HasColumnType("varchar(20)");
 
                     b.Property<string>("Estado")
                         .IsRequired()
-                        .HasMaxLength(1)
                         .HasColumnType("varchar(1)");
 
                     b.Property<DateTime>("FechaNac")
-                        .HasColumnType("datetime");
+                        .HasColumnType("DateTime");
+
+                    b.Property<DateTime>("FechaRegistro")
+                        .HasColumnType("DateTime");
 
                     b.Property<string>("Genero")
                         .IsRequired()
-                        .HasMaxLength(1)
                         .HasColumnType("varchar(1)");
 
                     b.Property<byte[]>("Imagen")
@@ -271,7 +271,6 @@ namespace WebPractica.Migrations
 
                     b.Property<string>("Nombre")
                         .IsRequired()
-                        .HasMaxLength(30)
                         .HasColumnType("varchar(30)");
 
                     b.Property<decimal>("Sueldo")
@@ -279,7 +278,6 @@ namespace WebPractica.Migrations
 
                     b.Property<string>("Trabaja")
                         .IsRequired()
-                        .HasMaxLength(2)
                         .HasColumnType("varchar(2)");
 
                     b.HasKey("IdRegistro");
@@ -292,10 +290,10 @@ namespace WebPractica.Migrations
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
                     b.Property<string>("Documento")
-                        .HasColumnType("varchar(max)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Nombre")
-                        .HasColumnType("varchar(max)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasDiscriminator().HasValue("AppUsuario");
                 });
