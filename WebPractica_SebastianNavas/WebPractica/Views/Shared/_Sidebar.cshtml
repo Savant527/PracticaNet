@@ -71,26 +71,26 @@
 
                         @if (User.IsInRole("Administrador") || User.IsInRole("SuperUsuario"))
                         {
-                        <li class="nav-item">
-                            <a href="~/Role/Create" class="nav-link active">
-                                <img width="30" src="~/img/roles.png">
-                                <p>Crear Roles</p>
-                            </a>
-                        </li>
+                            <li class="nav-item">
+                                <a href="~/Role/Create" class="nav-link active">
+                                    <img width="30" src="~/img/roles.png">
+                                    <p>Crear Roles</p>
+                                </a>
+                            </li>
 
-                        <li class="nav-item">
-                            <a href="~/Role/AddUserToRole" class="nav-link active">
-                                <img width="30" src="~/img/asignarrol.png">
-                                <p>Asignar Roles</p>
-                            </a>
-                        </li>
+                            <li class="nav-item">
+                                <a href="~/Role/AddUserToRole" class="nav-link active">
+                                    <img width="30" src="~/img/asignarrol.png">
+                                    <p>Asignar Roles</p>
+                                </a>
+                            </li>
 
-                        <li class="nav-item">
-                            <a href="~/Role/Index" class="nav-link active">
-                                <img width="30" src="~/img/usuarios.png">
-                                <p>Usuarios</p>
-                            </a>
-                        </li>
+                            <li class="nav-item">
+                                <a href="~/Role/Index" class="nav-link active">
+                                    <img width="30" src="~/img/usuarios.png">
+                                    <p>Usuarios</p>
+                                </a>
+                            </li>
                         }
                     </ul>
                 </li>
@@ -130,6 +130,15 @@
                                 <p>Reporte Excel</p>
                             </a>
                         </li>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link active" asp-area="" asp-controller="Registros" asp-action="Graficas">
+                                    <img width="30" src="~/img/estadistica.png">
+                                    <p>Estadísticas</p>
+                                </a>
+                            </li>
+                        }
                     </ul>
                 </li>
                 @*}*@

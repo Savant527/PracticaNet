@@ -1,127 +1,130 @@
-﻿@model IEnumerable<Persona.Models.Personas>
+﻿@model IEnumerable<WebPractica.Models.Registros>
+<div class="wrapper">
+    <div class="content-wrapper">
 
-<section class="content">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <!-- AREA CHART-->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <!-- AREA CHART-->
 
-                    <div class="card card-primary">
-                        <div class="card-header">
-                            <h3 class="card-title">Area Chart</h3>
+                            <div class="card card-primary">
+                                <div class="card-header">
+                                    <h3 class="card-title">AREA CHART</h3>
 
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                                <button type="button" class="btn btn-tool" data-card-widget="remove">
-                                    <i class="fas fa-times"></i>
-                                </button>
+                                    <div class="card-tools">
+                                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="chart">
+                                        <canvas id="areaChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                                    </div>
+                                </div>
+                                <!--card body-->
                             </div>
+                            <!--Card-->
                         </div>
-                        <div class="card-body">
-                            <div class="chart">
-                                <canvas id="areaChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
-                            </div>
-                        </div>
-                        <!--card body-->
                     </div>
-                    <!--Card-->
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <!-- PIE CHART-->
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <!-- PIE CHART-->
 
-                    <div class="card card-danger">
-                        <div class="card-header">
-                            <h3 class="card-title">Gráfico circular</h3>
+                            <div class="card card-danger">
+                                <div class="card-header">
+                                    <h3 class="card-title">GRÁFICO CIRCULAR</h3>
 
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                                <button type="button" class="btn btn-tool" data-card-widget="remove">
-                                    <i class="fas fa-times"></i>
-                                </button>
+                                    <div class="card-tools">
+                                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="chart">
+                                        <canvas id="pieChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                                    </div>
+                                </div>
+                                <!--card body-->
                             </div>
+                            <!--Card-->
                         </div>
-                        <div class="card-body">
-                            <div class="chart">
-                                <canvas id="pieChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
-                            </div>
-                        </div>
-                        <!--card body-->
                     </div>
-                    <!--Card-->
                 </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <!-- BAR CHART-->
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <!-- BAR CHART-->
 
-                    <div class="card card-success">
-                        <div class="card-header">
-                            <h3 class="card-title">Gráfico de barras</h3>
+                            <div class="card card-success">
+                                <div class="card-header">
+                                    <h3 class="card-title">GRÁFICO DE BARRAS</h3>
 
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                                <button type="button" class="btn btn-tool" data-card-widget="remove">
-                                    <i class="fas fa-times"></i>
-                                </button>
+                                    <div class="card-tools">
+                                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="chart">
+                                        <canvas id="areaChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                                    </div>
+                                </div>
+                                <!--card body-->
                             </div>
+                            <!--Card-->
                         </div>
-                        <div class="card-body">
-                            <div class="chart">
-                                <canvas id="areaChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
-                            </div>
-                        </div>
-                        <!--card body-->
                     </div>
-                    <!--Card-->
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <!-- LINE CHART-->
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <!-- LINE CHART-->
 
-                    <div class="card card-info">
-                        <div class="card-header">
-                            <h3 class="card-title">LINE CHART</h3>
+                            <div class="card card-info">
+                                <div class="card-header">
+                                    <h3 class="card-title">LINE CHART</h3>
 
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                                <button type="button" class="btn btn-tool" data-card-widget="remove">
-                                    <i class="fas fa-times"></i>
-                                </button>
+                                    <div class="card-tools">
+                                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="chart">
+                                        <canvas id="lineChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                                    </div>
+                                </div>
+                                <!--card body-->
                             </div>
+                            <!--Card-->
                         </div>
-                        <div class="card-body">
-                            <div class="chart">
-                                <canvas id="lineChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
-                            </div>
-                        </div>
-                        <!--card body-->
                     </div>
-                    <!--Card-->
                 </div>
+
             </div>
-        </div>
+        </section>
 
-    </div>
-</section>
 
-@section scripts {
-    <script>
+        @section scripts {
+            <script>
         jQuery.ajax({
-            url: '@Url.Action("DatosPersonas", "Personas")',
+            url: '@Url.Action("DatosPersonas", "Registros")',
             type: "GET",
             dataType: "json",
             contentType: "application/json; charset=utf-8",
@@ -131,7 +134,7 @@
                 for (var i = 0; i < data.length; i++) {
                     arrayNombres.push(data[i].nombre)
                     arrayEdades.push(data[i].edad)
-                }
+                };
 
                 var controlPie1 = document.getElementById("pieChart");
                 var graficoPie1 = new Chat(controlPie1, {
@@ -224,7 +227,7 @@
                                 display: true,
                                 scaleLabel: {
                                     display: true,
-                                    labelString: 'Nombres',
+                                    labelString: 'Nombre',
                                     fontSize: 15
                                 }
 
@@ -233,7 +236,7 @@
                                 display: true,
                                 scaleLabel: {
                                     display: true,
-                                    labelString: 'Edades',
+                                    labelString: 'Edad',
                                     fontSize: 15
                                 },
                                 ticks: {
@@ -294,5 +297,7 @@
                 console.log(error)
             }
         });
-    </script>
-}
+            </script>
+        }
+    </div>
+</div>

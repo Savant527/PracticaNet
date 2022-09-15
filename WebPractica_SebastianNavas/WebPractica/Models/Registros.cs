@@ -78,5 +78,11 @@ namespace WebPractica.Models
         [Column(TypeName = "DateTime")]
         public DateTime FechaRegistro { get; set; }
 
+        [DisplayName("Edad")]
+        //[DataType(DataType.integer)]
+        [Required(ErrorMessage = "Edad requerida")]
+        [Column(TypeName = "int")]
+        public int Edad { get; set; }
+
     }
 }
