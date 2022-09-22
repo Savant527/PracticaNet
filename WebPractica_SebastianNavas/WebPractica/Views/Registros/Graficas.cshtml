@@ -1,303 +1,298 @@
 ﻿@model IEnumerable<WebPractica.Models.Registros>
-<div class="wrapper">
-    <div class="content-wrapper">
 
-        <section class="content">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <!-- AREA CHART-->
-
-                            <div class="card card-primary">
-                                <div class="card-header">
-                                    <h3 class="card-title">AREA CHART</h3>
-
-                                    <div class="card-tools">
-                                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                            <i class="fas fa-minus"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-tool" data-card-widget="remove">
-                                            <i class="fas fa-times"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="card-body">
-                                    <div class="chart">
-                                        <canvas id="areaChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
-                                    </div>
-                                </div>
-                                <!--card body-->
+<section class="content-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <!-- AREA CHART -->
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Área Chart</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                    <i class="fas fa-times"></i>
+                                </button>
                             </div>
-                            <!--Card-->
                         </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <!-- PIE CHART-->
-
-                            <div class="card card-danger">
-                                <div class="card-header">
-                                    <h3 class="card-title">GRÁFICO CIRCULAR</h3>
-
-                                    <div class="card-tools">
-                                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                            <i class="fas fa-minus"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-tool" data-card-widget="remove">
-                                            <i class="fas fa-times"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="card-body">
-                                    <div class="chart">
-                                        <canvas id="pieChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
-                                    </div>
-                                </div>
-                                <!--card body-->
+                        <div class="card-body">
+                            <div class="chart">
+                                <canvas id="areaChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width:100%;"></canvas>
                             </div>
-                            <!--Card-->
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <!-- BAR CHART-->
-
-                            <div class="card card-success">
-                                <div class="card-header">
-                                    <h3 class="card-title">GRÁFICO DE BARRAS</h3>
-
-                                    <div class="card-tools">
-                                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                            <i class="fas fa-minus"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-tool" data-card-widget="remove">
-                                            <i class="fas fa-times"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="card-body">
-                                    <div class="chart">
-                                        <canvas id="areaChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
-                                    </div>
-                                </div>
-                                <!--card body-->
-                            </div>
-                            <!--Card-->
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <!-- LINE CHART-->
-
-                            <div class="card card-info">
-                                <div class="card-header">
-                                    <h3 class="card-title">LINE CHART</h3>
-
-                                    <div class="card-tools">
-                                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                            <i class="fas fa-minus"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-tool" data-card-widget="remove">
-                                            <i class="fas fa-times"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="card-body">
-                                    <div class="chart">
-                                        <canvas id="lineChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
-                                    </div>
-                                </div>
-                                <!--card body-->
-                            </div>
-                            <!--Card-->
-                        </div>
-                    </div>
-                </div>
-
             </div>
-        </section>
-
-
-        @section scripts {
-            <script>
-        jQuery.ajax({
-            url: '@Url.Action("DatosPersonas", "Registros")',
-            type: "GET",
-            dataType: "json",
-            contentType: "application/json; charset=utf-8",
-            succes: function (data) {
-                var arrayNombres = [];
-                var arrayEdades = [];
-                for (var i = 0; i < data.length; i++) {
-                    arrayNombres.push(data[i].nombre)
-                    arrayEdades.push(data[i].edad)
-                };
-
-                var controlPie1 = document.getElementById("pieChart");
-                var graficoPie1 = new Chat(controlPie1, {
-                    type: 'pie',
-                    data: {
-                        labels: arrayNombres,
-                        datasets: [{
-                            data: arrayEdades,
-                            backgroundColor: ["#03B100", "#0083B1", "#0800B1", "#f56954", "#00a65a", "#f39c12", "#00c0ef", "#3c8dbc", "#d2d6de", "#007bff", "#dc3545", "#ffc107", "#28a745"],
-                        }],
-                    },
-                    options: {
-                        title: {
-                            display: true,
-                            fontSize: 26,
-                            text: 'Reporte de edades'
-                        }
-                    }
-                });
-
-                var ctx = document.getElementById("areaChart").getContext('2d');
-                var myChart = new Chart(ctx, {
-                    type: 'line',
-                    responsive: false,
-                    animation: false,
-                    legend: { position: 'bottom' },
-                    data: {
-                        labels: arrayNombres,
-                        datasets: [{
-                            label: 'Edad',
-                            data: arrayEdades,
-                            backgroundColor: "rgb(66, 134, 244)"
-                        }]
-                    }, options: {
-                        events: ['click'],
-                        scaleShowValues: true,
-                        scales: {
-                            yAxes: [{
-                                ticks: {
-                                    beginAtZero: true
-                                }
-                            }],
-                            xAxes: [{
-                                ticks: {
-                                    autoSkip: true
-                                }
-                            }]
-                        },
-                        title: {
-                            display: true,
-                            fontSize: 26,
-                            text: 'Reporte de edades'
-                        }
-                    }
-                });
-                var ctx = document.getElementById("lineChart");
-                var myChart = new Chart(ctx, {
-                    type: 'line',
-                    data: {
-                        labels: arrayNombres,
-                        datasets: [{
-                            label: 'Edad',
-                            fill: false,
-                            backgroundColor: 'rgba(255,165,0,0.3',
-                            borderColor: 'rgb(255,135,20',
-                            pointStyle: "circle",
-                            pointBackgroundColor: 'rgb(0,222,0',
-                            pointRadius: 5,
-                            pointHoverRadius: 10,
-                            data: arrayEdades,
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        title: {
-                            display: true,
-                            fontSize: 26,
-                            text: 'Reporte de edades'
-                        },
-                        tooltips: {
-                            mode: 'point',
-                            intersect: true,
-                        },
-                        hover: {
-                            mode: 'nearest',
-                            intersect: true,
-                        },
-                        scales: {
-                            xAxes: [{
-                                display: true,
-                                scaleLabel: {
-                                    display: true,
-                                    labelString: 'Nombre',
-                                    fontSize: 15
-                                }
-
-                            }],
-                            yAxes: [{
-                                display: true,
-                                scaleLabel: {
-                                    display: true,
-                                    labelString: 'Edad',
-                                    fontSize: 15
-                                },
-                                ticks: {
-                                    fontSize: 15
-                                }
-                            }]
-                        },
-                        animation: {
-                            duration: 200
-                        }
-
-                    }
-                });
-                var controlBar1 = document.getElementById("barChart");
-                var graficoBar1 = new Chart(controlBar1, {
-                    type: 'bar',
-                    data: {
-                        labels: arrayNombres,
-                        datasets: [{
-                            label: 'Edad',
-                            backgroundColor: ["#03B100", "#0083B1", "#0800B1", "#f56954", "#00a65a", "#f39c12", "#00c0ef", "#3c8dbc", "#d2d6de", "#007bff", "#dc3545", "#ffc107", "#28a745"],
-                            borderColor: "#000000",
-                            borderWidth: 0,
-                            data: arrayEdades,
-                        }],
-                    },
-                    options: {
-                        responsive: true,
-
-                        scales: {
-                            xAxes: [{
-                                gridLines: {
-                                    display: true
-                                },
-
-                            }],
-                            yAxes: [{
-                                ticks: {
-                                    min: 0,
-                                },
-                                gridLines: {
-                                    display: true
-                                }
-                            }]
-                        },
-                        legend: {
-                            display: true
-                        },
-                        title: {
-                            display: true,
-                            fontSize: 26,
-                            text: 'Reporte de edades'
-                        }
-                    }
-                });
-            },
-            error: function (error) {
-                console.log(error)
-            }
-        });
-            </script>
-        }
+            <div class="col-md-6">
+                <div class="form-group">
+                    <!-- PIE CHART -->
+                    <div class="card card-danger">
+                        <div class="card-header">
+                            <h3 class="card-title">Gráfico Circular</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="chart">
+                                <canvas id="pieChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width:100%;"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <!-- BAR CHART -->
+                    <div class="card card-success">
+                        <div class="card-header">
+                            <h3 class="card-title">Gráfico de Barras</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="chart">
+                                <canvas id="barChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width:100%;"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <!-- LINE CHART -->
+                    <div class="card card-info">
+                        <div class="card-header">
+                            <h3 class="card-title">Line Chart</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="chart">
+                                <canvas id="lineChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width:100%;"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
+</section>
+
+
+@section scripts{
+    <script>
+        jQuery.ajax({
+                url: '@Url.Action("DatosPersonas", "Registros")',
+                type: "GET",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+
+                    /*console.log(data);*/
+
+                    var arrayNombres = [];
+                    var arrayEdades = [];
+
+                    for (var i = 0; i < data.length; i++) {
+
+                        /*console.log(data[i].mes)*/
+                        arrayNombres.push(data[i].nombre)
+                        arrayEdades.push(data[i].edad)
+                    }
+
+
+                    var controlPie1 = document.getElementById("pieChart");
+                    var graficoPie1 = new Chart(controlPie1, {
+                        type: 'pie',
+                        data: {
+                            labels: arrayNombres,
+                            datasets: [{
+                                data: arrayEdades,
+                                backgroundColor: ["#03B100", "#0083B1", "#0800B1", "#f56954", '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc', '#d2d6de', '#007bff', '#dc3545', '#ffc107', '#28a745'],
+                            }],
+                        },
+                        options: {
+                            title: {
+                                display: true,
+                                fontSize: 26,
+                                text: 'Reporte de edades'
+                            }
+                        }
+                    });
+
+
+                    var ctx = document.getElementById("areaChart").getContext('2d');
+                    var myChart = new Chart(ctx, {
+                        type: 'line',
+                        //height: "230px",
+                        //width: "300px",
+                        responsive: false,
+                        animation: false,
+                        legend: { position: 'bottom' },
+                        data: {
+                            labels: arrayNombres,
+                            datasets: [{
+                                label: 'Edad',
+                                data: arrayEdades,
+                                backgroundColor: "rgb(66, 134, 244)"
+                            }]
+                        }, options: {
+                            events: ['click'],
+                            scaleShowValues: true,
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: true
+                                    }
+                                }],
+                                xAxes: [{
+                                    ticks: {
+                                        autoSkip: false
+                                    }
+                                }]
+                            },
+                            title: {
+                                display: true,
+                                fontSize: 26,
+                                text: 'Reporte de edades'
+                            }
+                        }
+                    });
+
+                    var ctx = document.getElementById("lineChart");
+                    var chart = new Chart(ctx, {
+                        type: "line",
+                        data: {
+                            labels: arrayNombres,
+                            datasets: [{
+                                label: "Edad",
+                                fill: false,
+                                backgroundColor: 'rgba(255,165,0,0.3)',
+                                borderColor: 'rgb(255,135,20)',
+                                pointStyle: "circle",
+                                pointBackgroundColor: 'rgb(0,222,0)',
+                                pointRadius: 5,
+                                pointHoverRadius: 10,
+                                data: arrayEdades
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            title: {
+                                display: true,
+                                fontSize: 26,
+                                text: 'Reporte de edades'
+                            },
+                            tooltips: {
+                                mode: 'point',
+                                intersect: true,
+                            },
+                            hover: {
+                                mode: 'nearest',
+                                intersect: true
+                            },
+                            scales: {
+                                xAxes: [{
+                                    display: true,
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: 'Nombres',
+                                        fontSize: 15
+                                    },
+                                    ticks: {
+                                        fontSize: 15
+                                    }
+                                }],
+                                yAxes: [{
+                                    display: true,
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: 'Edades)',
+                                        fontSize: 15
+                                    },
+                                    ticks: {
+                                        fontSize: 15
+                                    }
+                                }]
+                            },
+                            animation: {
+                                duration: 2000
+                            }
+                        }
+                    });
+
+                    var controlBar1 = document.getElementById("barChart");
+                    var graficoBar1 = new Chart(controlBar1, {
+                        type: 'bar',
+                        data: {
+                            labels: arrayNombres,
+                            datasets: [{
+                                label: "Edad",
+                                /*backgroundColor: "#0800B1",*/
+                                backgroundColor: ["#03B100", "#0083B1", "#0800B1", "#f56954", '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc', '#d2d6de', '#007bff', '#dc3545', '#ffc107', '#28a745'],
+                                borderColor: "#000000",
+                                borderWidth: 0,
+                                data: arrayEdades,
+                            }],
+                        },
+                        options: {
+                            scales: {
+                                xAxes: [{
+                                    gridLines: {
+                                        display: true
+                                    },
+                                }],
+                                yAxes: [{
+                                    ticks: {
+                                        min: 0,
+                                    },
+                                    gridLines: {
+                                        display: true
+                                    }
+                                }],
+                            },
+                            legend: {
+                                display: true
+                            },
+                            title: {
+                                display: true,
+                                fontSize: 26,
+                                text: 'Reporte de edades'
+                            }
+                        }
+                    });
+                },
+                error: function (error) {
+                    console.log(error)
+                }
+        });
+
+
+
+
+
+    </script>
+}
